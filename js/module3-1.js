@@ -29,6 +29,9 @@
 
 // Цикл for...in
 
+// Метод Object.create()
+// Прототипне наслідування
+
 // Метод hasOwnProperty()
 
 // Метод Object.key()
@@ -38,6 +41,8 @@
 // Метод Object.entries()
 
 // Метод Object.freeze()
+
+// Метод Object.assign()
 
 // ❗️❗️❗️ Масив об'ектів
 
