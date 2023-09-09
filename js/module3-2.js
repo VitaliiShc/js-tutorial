@@ -25,6 +25,24 @@
 // const allArrays = [...array0, ...array1];
 // console.log(allArrays); // [1, 2, 3, 4, 5]
 
+// операція spread збірає всі передані колекції або примитиви як окреми незалежні значення в одну нову коелкцію.
+
+// // const array = [...[1, 2, 3], 4, 5];
+// // console.log(array); // [1, 2, 3, 4, 5]
+
+// // const numbers = [...[1, 2, 3], 4, 5];
+// // console.log(Math.max(...numbers)); // 5
+
+// // аналог concat
+// const arr0 = [1, 2, 3];
+// const arr1 = [4, 5, 6];
+// const arr2 = [7, 8, 9];
+// const arrRes = [...arr0, ...arr1, ...arr2]; // spread
+// const arrConc = arr0.concat(arr1, arr2); // concat
+
+// console.log(arrRes); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+// console.log(arrConc); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
 // // ...spread : створення нового об'екту
 // // дозволяє розподілити властивості кількох об'ектів в один новий. Повертає новий об'ект. Якщо імена властивостей збігаються, то буде застосована одна властивість зі значенням, яке "прийшло" пізніше:
 // const obj0 = {
@@ -68,6 +86,7 @@
 // multiply(1, 2, 3, 4, 5, 6);
 
 // // ❗️❗️❗️ Деструктуризація об'ектів
+// Деструктурізація бере те, що праворуч від рівно, та записує в те, що ліворуч від рівно.
 // // дозволяє оголосити змінні з ключів об'екту, та використовувати іх без звернення до назви об'екту:
 // // без деструктурізаціі
 // const user = {
@@ -82,7 +101,7 @@
 //   name: 'Vitalii',
 //   age: 46,
 // };
-// const { name, age, address } = user;
+// const { name, age, address } = user; // фігурні дужуи зліва від знака рівності - операція деструктурізації
 // console.log(`My name is ${name}. I'm ${age} y.o. I live in ${address}`); // My name is Vitalii. I'm 46 y.o. I live in undefined
 // console.log(address); // undefind - такой властивості немає
 
@@ -102,6 +121,13 @@
 // };
 // const { name, age, address:location } = user;
 // console.log(`My name is ${name}. I'm ${age} y.o. I live in ${location}.`); // My name is Vitalii. I'm 46 y.o. I live in Kyiv.
+
+// якщо необхідно перйменувати змінну та ще і додати дефолтне значення, то так:
+// // const user = {
+//   name: 'Vitalii',
+//   age: 46,
+// };
+// const { name, age, address: location = 'Kyiv'} = user;
 
 // // Деструктцрізація в циклах
 // // при переборі масива об'ектів циклом for...of утворюються багаторазові звернення до властивостей об'екта
@@ -182,19 +208,19 @@
 // const rgb = [200, 255, 100];
 // const [, green, ] = rgb;
 
-// // Патерн "Об'ект параметрів"
-// в функцію зруцчно передавати не окрми параметри, коли іх багато, а одрузу об'ект з іменованимі властивостями - з деструктурізацією одрузк після передавання:
-const user = {
-  name: 'Vitalii',
-  age: 46,
-  address: {
-    country: 'Ukrain',
-    city: 'Kyiv',
-  },
-};
-// function aboutMe(user) {
-//   console.log(user.name);
-// }
+// // // Патерн "Об'ект параметрів"
+// // в функцію зруцчно передавати не окрми параметри, коли іх багато, а одрузу об'ект з іменованимі властивостями - з деструктурізацією одрузк після передавання:
+// const user = {
+//   name: 'Vitalii',
+//   age: 46,
+//   address: {
+//     country: 'Ukrain',
+//     city: 'Kyiv',
+//   },
+// };
+// // function aboutMe(user) {
+// //   console.log(user.name);
+// // }
 
 // aboutMe({
 //   name: 'Vitalii',
@@ -235,3 +261,15 @@ const user = {
 //     city: 'Kyiv',
 //   },
 // });
+
+// // ❗️❗️❗️ Object.assign() - використовується для створення нового об'екта з переданих. Аналогічно spread, але метод деструктиіний, тобто зхмінює об'ект, на котрому він викликається
+// const a = { x: 1, y: 2 };
+// const b = { x: 0, z: 3 };
+// const c = Object.assign( a, b );
+// console.log(c); // {x: 0, y: 2, z: 3} - змінено c
+
+// // або зібрати об'екты в новий об'ект
+// const a = { x: 1, y: 2 };
+// const b = { x: 0, z: 3 };
+// const c = Object.assign({ a, b });
+// console.log(c); // {a: {x: 1, y: 2}, b: {x: 0, z: 3}}
