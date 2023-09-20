@@ -1,5 +1,3 @@
-'use strict';
-
 // ❗️❗️❗️ This (контекст)
 // ключове слово This аикористовується для звернення для властивостей об'екта всередині методів цього об'екта.
 // This - це як займенник для використання в функції об'екта.
@@ -43,14 +41,12 @@
 // 2.2.1. в рамках функції - приймає ії контекст - переходмо на начало та визначаємо тип функції-контекста (на п 1)
 // 2.2.2. Всі інши випадки завжди : this === window
 
-
-
 // ❗️❗️❗️ Методи функцій
 // Якщо функцію потрібно викликати як метод об'екта, при цьому функція не є методом цього об'екта, вікористовуються методи call(), apply(), bind() для функції.
 
 // ❗️❗️❗️ Метод call()
 // foo.call(obj, aarg1, arg2, ...)
-// Викеликає функцію таким чином, що в контексті (this) буде посилання на об'ект (obj), а також передає аргументи.
+// Викеликає функцію таким чином, що в контексті (this) буде посилання на об'ект (obj), а також передає аргументи. Тобто, this-ом для функції буде об'ект, який свказано, та функція буде використовуватися для цього об'екта.
 
 // function hello(message) {
 //     console.log(`${message}, ${this.name}!`)
@@ -62,6 +58,23 @@
 
 // hello.call(user, 'Hello'); // Hello, Vitalii!
 // hello.call(user, 'Hi'); // Hi, Vitalii!
+
+// function showMaxSpeed() {
+//     console.log(`${this.brand} має максимальну швідкість ${this.speed}`)
+// };
+
+// const audi = {
+// brand: 'Audi',
+//     speed: 240,
+// }
+
+// const bmw = {
+//   brand: 'BMW',
+//   speed: 270,
+// };
+
+// showMaxSpeed.call(audi); // Audi має максимальну швідкість 240
+// showMaxSpeed.call(bmw); // BMW має максимальну швідкість 270
 
 // ❗️❗️❗️ Метод apply()
 // Аналог call(), але в якості аргумета (одного), переадеться масив.
@@ -82,7 +95,7 @@
 // ❗️❗️❗️ Метод bind()
 // Використовується для виконання колбек=функції, коли потрібно викликати функцію не відразу, а передати посилання на неї з прив'язаним контекстом
 // foo.bind(obj, arg1, arg2, ...)
-// Метод створює і повертає копію функціїз прив'язаним контекстом (obj) і аргументами - утворюєиться кеопія функції, яку сможна передати куда завгодно та коли завгодно.
+// Метод створює і повертає копію функції з прив'язаним контекстом (obj) і аргументами - утворюєиться кеопія функції, яку можна передати куда завгодно та коли завгодно.
 
 // function greet(name) {
 //   return `Welcome to ${this.city}, ${name}!`;
@@ -102,4 +115,100 @@
 // console.log(kyivGreeting(`Vitalii`)); // Welcome to Kyiv, Vitalii!
 // console.log(myrgorodGreeting(`Inna`)); // Welcome to Myrgorod, Inna!
 
+// Приклад завдання з леккції
 
+// // BIND
+
+// const inventory = {
+//     items: ['Knife', 'Mask'],
+//     add(itemName) {
+//         console.log(`Adding ${itemName} to inventory.`);
+
+//         this.items.push(itemName);
+//     },
+//     remove(itemName) {
+//         console.log(`Removing ${itemName} from inventory.`);
+
+//         this.items = this.items.filter(item => item !== itemName);
+//     },
+// }
+
+// const invokeInventoryAction = function (itemName, action) {
+//     console.log(`Invoking action on ${itemName}.`);
+//     action(itemName);
+// }
+// // const add = inventory.add.bind(inventory); // передаємо коллбек-функцію, яка копиюється з прив'язкою до об'екта
+// // invokeInventoryAction('Medkit', add);
+
+// // коротший запис, без оголошення зайвої змфнної:
+// invokeInventoryAction('Medkit', inventory.add.bind(inventory));
+
+// console.log(inventory.items);
+
+// invokeInventoryAction('Mask', inventory.remove.bind(inventory));
+
+// console.log(inventory.items);
+
+// // CALL - довгий шлях
+
+// const inventory = {
+//   items: ['Knife', 'Mask'],
+//   add(itemName) {
+//     console.log(`Adding ${itemName} to inventory.`);
+
+//     this.items.push(itemName);
+//   },
+//   remove(itemName) {
+//     console.log(`Removing ${itemName} from inventory.`);
+
+//     this.items = this.items.filter(item => item !== itemName);
+//   },
+// };
+
+// const invokeInventoryAction = function (itemName, action) {
+//   console.log(`Invoking action on ${itemName}.`);
+//   action.call(this, itemName); //транзитнипй шлях
+// };
+// // const add = inventory.add.bind(inventory); // передаємо коллбек-функцію, яка копиюється з прив'язкою до об'екта
+// // invokeInventoryAction('Medkit', add);
+
+// // коротший запис, без оголошення зайвої змфнної:
+// invokeInventoryAction.call(inventory, 'Medkit', inventory.add);
+
+// console.log(inventory.items);
+
+// // invokeInventoryAction('Mask', inventory.remove.bind(inventory));
+
+// // console.log(inventory.items);
+
+// // APPLY - довгий шлях
+
+// const inventory = {
+//   items: ['Knife', 'Mask'],
+//   add(itemName) {
+//     console.log(`Adding ${itemName} to inventory.`);
+
+//     this.items.push(itemName);
+//   },
+//   remove(itemName) {
+//     console.log(`Removing ${itemName} from inventory.`);
+
+//     this.items = this.items.filter(item => item !== itemName);
+//   },
+// };
+
+// const invokeInventoryAction = function (itemName, action) {
+//   console.log(`Invoking action on ${itemName}.`);
+//   action.apply(this, [itemName]); //транзитнипй шлях
+// };
+// // const add = inventory.add.bind(inventory); // передаємо коллбек-функцію, яка копиюється з прив'язкою до об'екта
+// // invokeInventoryAction('Medkit', add);
+
+// // коротший запис, без оголошення зайвої змфнної:
+// invokeInventoryAction.apply(inventory, ['Medkit', inventory.add]);
+
+// console.log(inventory.items);
+
+// // invokeInventoryAction('Mask', inventory.remove.bind(inventory));
+
+// // console.log(inventory.items);

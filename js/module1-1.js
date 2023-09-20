@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; // увімкнення строгого режиму (якщо не використовується  type="module" в html)
 
 // ❗️❗️❗️ SAY HELLO
 // const helloMsg = 'Hello World';
