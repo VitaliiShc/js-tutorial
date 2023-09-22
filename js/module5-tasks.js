@@ -163,29 +163,353 @@
 // console.log(historyService.getOrdersByEmail('solomon@topmail.net')); // [{ email: "solomon@topmail.net", dish: "Burger" }, { email: "solomon@topmail.net", dish: "Apple pie" }]
 // console.log(historyService.getOrdersByEmail('artemis@coldmail.net')); // [{ email: "artemis@coldmail.net", dish: "Pizza" }]
 
-// 💡 Task 04
+// // 💡 Task 04
+// // Зміни код таким чином, щоб об'єкт parent став прототипом для об'єкта у змінній сhild. Використовується метод Object.create().
 
-// 💡 Task 05
+// const parent = {
+//   name: 'Stacey',
+//   surname: 'Moore',
+//   age: 54,
+//   heritage: 'Irish',
+// };
+// // Change code below this line
 
-// 💡 Task 05
+// // const child = {};
 
-// 💡 Task 06
+// const child = Object.create(parent);
 
-// 💡 Task 07
+// // Change code above this line
+// child.name = 'Jason';
+// child.age = 27;
 
-// 💡 Task 08
+// console.log(parent.hasOwnProperty('surname')); // true
+// console.log(parent.hasOwnProperty('heritage')); // true
+// console.log(child.hasOwnProperty('name')); // true
+// console.log(child.name); // "Jason"
+// console.log(child.hasOwnProperty('age')); // true
+// console.log(child.age); // 27
+// console.log(child.hasOwnProperty('surname')); // false
+// console.log(child.surname); // "Moore"
+// console.log(child.hasOwnProperty('heritage')); // false
+// console.log(child.heritage); // "Irish"
+// console.log(parent.isPrototypeOf(child)); // true
+
+// // 💡 Task 05
+// // ЗАДАЧА: ЛАНЦЮЖОК ПРОТОТИПІВ
+// // Зміни код, побудувавши ланцюжок прототипів таким чином, щоб об'єкт ancestor був прототипом для parent, а той, своєю чергою, був прототипом для child. Використовується метод Object.create()
+
+// const ancestor = {
+//   name: 'Paul',
+//   age: 83,
+//   surname: 'Dawson',
+//   heritage: 'Irish',
+// };
+// // Change code below this line
+
+// // const parent = {};
+// // parent.name = "Stacey";
+// // parent.surname = "Moore";
+// // parent.age = 54;
+
+// // const child = {};
+// // child.name = "Jason";
+// // child.age = 27;
+
+// const parent = Object.create(ancestor);
+// parent.name = 'Stacey';
+// parent.surname = 'Moore';
+// parent.age = 54;
+
+// const child = Object.create(parent);
+// child.name = 'Jason';
+// child.age = 27;
+
+// // Change code above this line
+
+// console.log(ancestor.isPrototypeOf(parent)); // true
+// console.log(parent.isPrototypeOf(child)); // true
+// console.log(ancestor.hasOwnProperty('surname')); // true
+// console.log(ancestor.surname); // "Dawson"
+// console.log(parent.hasOwnProperty('surname')); // true
+// console.log(parent.surname); // "Moore"
+// console.log(child.hasOwnProperty('surname')); // false
+// console.log(child.surname); // "Moore"
+// console.log(ancestor.hasOwnProperty('heritage')); // true
+// console.log(ancestor.heritage); // "Irish"
+// console.log(parent.hasOwnProperty('heritage')); // false
+// console.log(parent.heritage); // "Irish"
+// console.log(child.hasOwnProperty('heritage')); // false
+// console.log(child.heritage); // "Irish"
+
+// // 💡 Task 06
+// // Використовуючи ключове слово class, оголоси клас Car з порожнім тілом.
+
+// class Car {}
+
+// console.log(new Car()); // Car{__proto__}
+
+// // 💡 Task 07
+// // Додай класу Car метод constructor, який приймає три параметри:
+// // brand - марка автомобіля.
+// // model - модель автомобіля.
+// // price - ціна автомобіля.
+// // Клас Car повинен створювати об'єкт з однойменними властивостями brand, model і price, значеннями яких повинні бути передані аргументи під час його виклику з оператором new.
+
+// class Car {
+//   // Change code below this line
+
+//   constructor(brand, model, price) {
+//     this.brand = brand;
+//     this.model = model;
+//     this.price = price;
+//   }
+
+//   // Change code above this line
+// }
+
+// const audiQ3 = new Car('Audi', 'Q3', 36000)
+// console.log(audiQ3); // утвориться об'єкт { brand: "Audi", model: "Q3", price: 36000 }
+
+// const bmwX5 = new Car('BMW', 'X5', 58900);
+// console.log(bmwX5); // утвориться об'єкт { brand: "BMW", model: "X5", price: 58900 }
+
+// const nissanMurano = new Car('Nissan', 'Murano', 31700);
+// console.log(nissanMurano); // утвориться об'єкт { brand: "Nissan", model: "Murano", price: 31700 }
+
+// // 💡 Task 08
+// // Виконай рефакторинг класу Car таким чином, щоб він приймав один параметр - об'єкт з властивостями brand, model і price. Деструктуризуй об'єкт в сигнатурі (підписі) конструктора.
+
+// class Car {
+//   // Change code below this line
+//   // constructor(brand, model, price) {
+//   //   this.brand = brand;
+//   //   this.model = model;
+//   //   this.price = price;
+//   // }
+
+//   constructor({ brand, model, price }) {
+//     this.brand = brand;
+//     this.model = model;
+//     this.price = price;
+//   }
+//   // Change code above this line
+// }
+
+// const audiQ3 = new Car({
+//   brand: 'Audi',
+//   model: 'Q3',
+//   price: 36000,
+// });
+// console.log(audiQ3); // утвориться об'єкт { brand: "Audi", model: "Q3", price: 36000 }
+
+// const bmwX5 = new Car({
+//   brand: 'BMW',
+//   model: 'X5',
+//   price: 58900,
+// });
+// console.log(bmwX5); // утвориться об'єкт { brand: "BMW", model: "X5", price: 58900 }
+
+// const nissanMurano = new Car({
+//   brand: 'Nissan',
+//   model: 'Murano',
+//   price: 31700,
+// });
+// console.log(nissanMurano); // утвориться об'єкт { brand: "Nissan", model: "Murano", price: 31700 }
 
 // 💡 Task 09
+// Додай класу Car два методи.
+// getPrice() - повертає значення властивості price з об'єкта, який буде його викликати.
+// changePrice(newPrice) - оновлює значення властивості price в об'єкта, який буде його викликати, на newPrice.
 
-// 💡 Task 10
+// class Car {
+//   constructor({ brand, model, price }) {
+//     this.brand = brand;
+//     this.model = model;
+//     this.price = price;
+//   }
+//   // Change code below this line
+//   getPrice() {
+//     return this.price;
+//   }
 
-// 💡 Task 11
+//   changePrice(newPrice) {
+//     this.price = newPrice;
+//   }
+//   // Change code above this line
+// }
 
-// 💡 Task 12
+// // 💡 Task 10
+// // ЗАДАЧА: СКЛАД
+// // Напиши клас Storage, який буде створювати об'єкти для управління складом товарів. Клас очікує тільки один аргумент - початковий масив товарів, який записується у властивість items об'єкта, що створюється.
+// // Оголоси наступні методи класу:
+// // getItems() - повертає масив поточних товарів у властивості items об'єкта, який викликає цей метод.
+// // addItem(newItem) - приймає новий товар newItem і додає його в масив товарів у властивості items об'єкта, який викликає цей метод.
+// // removeItem(itemToRemove) - приймає товар itemToRemove і видаляє його з масиву товарів у властивості items об'єкта, який викликає цей метод.
+// // Під коментарем ми додали ініціалізацію екземпляра і виклики методів у тій послідовності, в якій твій код перевірятимуть тести. Будь ласка, нічого там не змінюй.
 
-// 💡 Task 13
+// class Storage {
+//   constructor(items) {
+//     this.items = items;
+//   }
+
+//   getItems() {
+//     return this.items;
+//   }
+
+//   addItem(newItem) {
+//     if (!this.items.includes(newItem)) {
+//       this.items.push(newItem);
+//     }
+//   }
+//   removeItem(itemToRemove) {
+//     if (this.items.includes(itemToRemove)) {
+//       this.items.splice(this.items.indexOf(itemToRemove), 1);
+//     }
+//   }
+// }
+
+// // Change code above this line
+
+// const storage = new Storage(['Nanitoids', 'Prolonger', 'Antigravitator']);
+
+// console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+// storage.addItem('Droid');
+// console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+// storage.removeItem('Prolonger');
+// console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
+// // 💡 Task 11
+// // ЗАДАЧА: КОНСТРУКТОР РЯДКІВ
+// // Напиши клас StringBuilder, який приймає один параметр initialValue - довільний рядок, який записується у властивість value об'єкта, що створюється.
+// // Оголоси наступні методи класу:
+// // getValue() - повертає поточне значення властивості value.
+// // padEnd(str) - отримує параметр str (рядок) і додає його в кінець значення властивості value об'єкта, який викликає цей метод.
+// // padStart(str) - отримує параметр str (рядок) і додає його на початок значення властивості value об'єкта, який викликає цей метод.
+// // padBoth(str) - отримує параметр str (рядок) і додає його на початок і в кінець значення властивості value об'єкта, який викликає цей метод.
+// // Під коментарем ми додали ініціалізацію екземпляра і виклики методів у тій послідовності, в якій твій код перевірятимуть тести. Будь ласка, нічого там не змінюй.
+
+// class StringBuilder {
+//   constructor(value) {
+//     this.value = value;
+//   }
+//   getValue() {
+//     return this.value;
+//   }
+
+//   padEnd(str) {
+//     this.value += str;
+//   }
+
+//   padStart(str) {
+//     this.value = str + this.value;
+//   }
+
+//   padBoth(str) {
+//     this.value = str + this.value + str;
+//   }
+// }
+
+// // Change code above this line
+// const builder = new StringBuilder('.');
+
+// console.log(builder.getValue()); // "."
+// builder.padStart('^');
+// console.log(builder.getValue()); // "^."
+// builder.padEnd('^');
+// console.log(builder.getValue()); // "^.^"
+// builder.padBoth('=');
+// console.log(builder.getValue()); // "=^.^="
+
+// // 💡 Task 12
+// // Виконай рефакторинг класу Car таким чином, щоб властивість brand була приватною, і додай два методи для публічного інтерфейсу, для читання і зміни цієї властивості.
+// // getBrand() - повертає значення приватної властивості brand.
+// // changeBrand(newBrand) - змінює значення приватної властивості brand на newBrand.
+
+// class Car {
+//   // Change code below this line
+
+//   // constructor({ brand, model, price }) {
+//   //   this.brand = brand;
+//   //   this.model = model;
+//   //   this.price = price;
+//   //   }
+//   #brand;
+//   constructor({ brand, model, price }) {
+//     this.#brand = brand;
+//     this.model = model;
+//     this.price = price;
+//   }
+
+//   getBrand() {
+//     return this.#brand;
+//   }
+
+//   changeBrand(newBrand) {
+//     this.#brand = newBrand;
+//   }
+
+//   // Change code above this line
+// }
+// const audiQ3 = new Car({
+//   brand: 'Audi',
+//   model: 'Q3',
+//   price: 36000,
+// });
+// console.log(audiQ3); // утвориться об'єкт { brand: "Audi", model: "Q3", price: 36000 }
+
+// const bmwX5 = new Car({
+//   brand: 'BMW',
+//   model: 'X5',
+//   price: 58900,
+// });
+// console.log(bmwX5); // утвориться об'єкт { brand: "BMW", model: "X5", price: 58900 }
+
+// const nissanMurano = new Car({
+//   brand: 'Nissan',
+//   model: 'Murano',
+//   price: 31700,
+// });
+// console.log(nissanMurano); // утвориться об'єкт { brand: "Nissan", model: "Murano", price: 31700 }
+
+// nissanMurano.changeBrand('Honda');
+// console.log(nissanMurano); // утвориться об'єкт { brand: "Honda", model: "Murano", price: 31700 }
+
+// // 💡 Task 13
+// // ЗАДАЧА: СКЛАД 2.0
+// // Виконай рефакторинг класу Storage, зробивши властивість items приватною.
+// // Під коментарем ми додали ініціалізацію екземпляра і виклики методів у тій послідовності, в якій твій код перевірятимуть тести. Будь ласка, нічого там не змінюй.
+
+// class Storage {
+//   // Change code below this line
+//   #items;
+//   constructor(items) {
+//     this.#items = items;
+//   }
+
+//   getItems() {
+//     return this.#items;
+//   }
+
+//   addItem(newItem) {
+//     this.#items.push(newItem);
+//   }
+
+//   removeItem(itemToRemove) {
+//     this.#items = this.#items.filter(item => item !== itemToRemove);
+//   }
+// }
+
+// // Change code above this line
+// const storage = new Storage(['Nanitoids', 'Prolonger', 'Antigravitator']);
+
+// console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+// storage.addItem('Droid');
+// console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+// storage.removeItem('Prolonger');
+// console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Droid"]
 
 // 💡 Task 14
+// ЗАДАЧА: КОНСТРУКТОР РЯДКІВ 2.0
 
 // 💡 Task 15
 
