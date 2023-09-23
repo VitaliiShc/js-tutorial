@@ -508,17 +508,305 @@
 // storage.removeItem('Prolonger');
 // console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Droid"]
 
-// 💡 Task 14
-// ЗАДАЧА: КОНСТРУКТОР РЯДКІВ 2.0
+// // 💡 Task 14
+// // ЗАДАЧА: КОНСТРУКТОР РЯДКІВ 2.0
+// // Виконай рефакторинг класу StringBuilder, зробивши властивість value приватною.
+// // Під коментарем ми додали ініціалізацію екземпляра і виклики методів у тій послідовності, в якій твій код перевірятимуть тести. Будь ласка, нічого там не змінюй.
 
-// 💡 Task 15
+// class StringBuilder {
+//   // Change code below this line
+//   #value;
+//   constructor(initialValue) {
+//     this.#value = initialValue;
+//   }
 
-// 💡 Task 16
+//   getValue() {
+//     return this.#value;
+//   }
 
-// 💡 Task 17
+//   padEnd(str) {
+//     this.#value += str;
+//   }
 
-// 💡 Task 18
+//   padStart(str) {
+//     this.#value = str + this.#value;
+//   }
 
-// 💡 Task 19
+//   padBoth(str) {
+//     this.padStart(str);
+//     this.padEnd(str);
+//   }
+// }
 
-// 💡 Task 20
+// // Change code above this line
+// const builder = new StringBuilder('.');
+// console.log(builder);
+// console.log(builder.getValue()); // "."
+// builder.padStart('^');
+// console.log(builder.getValue()); // "^."
+// builder.padEnd('^');
+// console.log(builder.getValue()); // "^.^"
+// builder.padBoth('=');
+// console.log(builder.getValue()); // "=^.^="
+
+// // 💡 Task 15
+// // Виконай рефакторинг класу Car. Зроби властивості model і price приватними, а також #brand. Стандартизуй публічний інтерфейс класу, замінивши вже оголошені методи на гетери та сетери brand, model і price, для взаємодії з приватними властивостями.
+
+// class Car {
+//   // Change code below this line
+//   #brand;
+//   #model;
+//   #price;
+
+//   constructor({ brand, model, price }) {
+//     this.#brand = brand;
+//     this.#model = model;
+//     this.#price = price;
+//   }
+
+//   get brand() {
+//     return this.#brand;
+//   }
+
+//   set brand(newBrand) {
+//     this.#brand = newBrand;
+//   }
+
+//   get model() {
+//     return this.#model;
+//   }
+
+//   set model(newModel) {
+//     this.#model = newModel;
+//   }
+
+//   get price() {
+//     return this.#price;
+//   }
+
+//   set price(newPrice) {
+//     this.#price = newPrice;
+//   }
+//   // Change code above this line
+// }
+
+// const audiQ3 = new Car({
+//   brand: 'Audi',
+//   model: 'Q3',
+//   price: 36000,
+// });
+
+// console.log(audiQ3); // утвориться об'єкт { brand: "Audi", model: "Q3", price: 36000 }
+// console.log(audiQ3.brand);
+// console.log(audiQ3.model);
+// console.log(audiQ3.price);
+
+// audiQ3.brand = 'Honda';
+// audiQ3.model = 'Civic';
+// audiQ3.price = 3200;
+
+// console.log(audiQ3.brand);
+// console.log(audiQ3.model);
+// console.log(audiQ3.price);
+
+// // 💡 Task 16
+// // Виконай рефакторинг класу Car. Додай публічну статичну властивість MAX_PRICE зі значенням 50000 - максимально допустима ціна автомобіля.
+// // Додай сетеру price перевірку значення параметра newPrice, що передається. Якщо воно більше за MAX_PRICE, сеттер нічого не робить, а якщо менше або дорівнює, то перезаписує ціну автомобіля.
+
+// class Car {
+//   // Change code below this line
+//   #price;
+//   static MAX_PRICE = 50000;
+
+//   constructor({ price }) {
+//     this.#price = price;
+//   }
+
+//   get price() {
+//     return this.#price;
+//   }
+
+//   set price(newPrice) {
+//     if (newPrice < Car.MAX_PRICE) {
+//       this.#price = newPrice;
+//     }
+//   }
+//   // Change code above this line
+// }
+
+// const audi = new Car({ price: 35000 });
+// console.log(audi.price); // 35000
+
+// audi.price = 49000;
+// console.log(audi.price); // 49000
+
+// audi.price = 51000;
+// console.log(audi.price); // 49000
+
+// // 💡 Task 17
+// // Додай класу Car публічний статичний метод checkPrice (price), що приймає ціну автомобіля. Метод повинен порівняти значення параметра price і приватної статичного властивості MAX_PRICE.
+// // Якщо ціна автомобіля перевищує максимальну, метод повинен повернути рядок "Error! Price exceeds the maximum".
+// // В іншому випадку метод повинен повернути рядок "Success! Price is within acceptable limits".
+// // Під оголошенням класу ми додали ініціалізацію екземпляра і виклики методів, щоб показати, як буде використовуватися метод checkPrice(price).
+
+// class Car {
+//   static #MAX_PRICE = 50000;
+//   // Change code below this line
+//   static checkPrice(price) {
+//     if (price > Car.#MAX_PRICE) {
+//       return 'Error! Price exceeds the maximum';
+//     }
+//     return 'Success! Price is within acceptable limits';
+//   }
+
+//   // Change code above this line
+//   constructor({ price }) {
+//     this.price = price;
+//   }
+// }
+
+// const audi = new Car({ price: 36000 });
+// const bmw = new Car({ price: 64000 });
+
+// console.log(Car.checkPrice(audi.price)); // "Success! Price is within acceptable limits"
+// console.log(Car.checkPrice(bmw.price)); // "Error! Price exceeds the maximum"
+
+// console.log(Car.checkPrice(36000)); // "Success! Price is within acceptable limits"
+// console.log(Car.checkPrice(18000)); // "Success! Price is within acceptable limits"
+// console.log(Car.checkPrice(64000)); // "Error! Price exceeds the maximum"
+// console.log(Car.checkPrice(57000)); // "Error! Price exceeds the maximum"
+
+// // 💡 Task 18
+// // У застосунку потрібен адміністратор з можливістю додавати пошти користувачів у чорний список.
+// // Оголоси клас Admin, який наслідує від класу User.
+// // Додай класу Admin публічну статичну властивість AccessLevel (рівень доступу), значення якої — це об'єкт {BASIC: "basic", SUPERUSER: "superuser"}.
+
+// class User {
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+// // Change code below this line
+
+// class Admin extends User {
+//   static AccessLevel = {
+//     BASIC: 'basic',
+//     SUPERUSER: 'superuser',
+//   };
+// }
+
+// console.log(Admin.AccessLevel.BASIC); // "basic"
+// console.log(Admin.AccessLevel.SUPERUSER); // "superuser"
+
+// // 💡 Task 19
+// // Додай класу Admin метод constructor, який приймає один параметр - об'єкт налаштувань з двома властивостями email і accessLevel. Додай класу Admin публічну властивість accessLevel, значення якої буде передаватися під час виклику конструктора.
+// // Щоб показати, як буде використовуватися клас Admin, ми додали ініціалізацію екземпляра під оголошенням класу.
+
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+
+// class Admin extends User {
+//   // Change code below this line
+
+//   static AccessLevel = {
+//     BASIC: 'basic',
+//     SUPERUSER: 'superuser',
+//     };
+//     constructor({email, accessLevel}) {
+//         super(email);
+//         this.accessLevel = accessLevel;
+//     }
+
+//   // Change code above this line
+// }
+
+// const mango = new Admin({
+//   email: 'mango@mail.com',
+//   accessLevel: Admin.AccessLevel.SUPERUSER,
+// });
+
+// console.log(mango.email); // "mango@mail.com"
+// console.log(mango.accessLevel); // "superuser"
+
+// console.log(Admin.AccessLevel.BASIC); // "basic"
+// console.log(Admin.AccessLevel.SUPERUSER); // "superuser"
+
+// // 💡 Task 20
+// // Додай класу Admin наступні властивості і методи.
+// // Публічну властивість blacklistedEmails для зберігання чорного списку поштових адрес користувачів. Значення за замовчуванням — це порожній масив.
+// // Публічний метод blacklist(email) для додавання пошти у чорний список. Метод повинен додавати значення параметра email в масив, що зберігається у властивості blacklistedEmails.
+// // Публічний метод isBlacklisted(email) для перевірки пошти у чорному списку. Метод повинен перевіряти наявність значення параметра email в масиві, що зберігається у властивості blacklistedEmails, і повертати true або false.
+// // Після оголошення класу ми додали ініціалізацію екземпляра і виклики методів у тій послідовності, в якій твій код перевірятимуть тести. Будь ласка, нічого там не змінюй.
+
+// class User {
+//   email;
+
+//   constructor(email) {
+//     this.email = email;
+//   }
+
+//   get email() {
+//     return this.email;
+//   }
+
+//   set email(newEmail) {
+//     this.email = newEmail;
+//   }
+// }
+// class Admin extends User {
+//   // Change code below this line
+
+//   static AccessLevel = {
+//     BASIC: 'basic',
+//     SUPERUSER: 'superuser',
+//   };
+
+//   constructor({ email, accessLevel, blacklistedEmails = [] }) {
+//     super(email);
+//     this.accessLevel = accessLevel;
+//     this.blacklistedEmails = blacklistedEmails;
+//   }
+//   blacklist(email) {
+//     this.blacklistedEmails.push(email);
+//   }
+
+//   isBlacklisted(email) {
+//     return this.blacklistedEmails.includes(email);
+//   }
+
+//   // Change code above this line
+// }
+
+// const mango = new Admin({
+//   email: 'mango@mail.com',
+//   accessLevel: Admin.AccessLevel.SUPERUSER,
+// });
+
+// console.log(mango.email); // "mango@mail.com"
+// console.log(mango.accessLevel); // "superuser"
+
+// mango.blacklist('poly@mail.com');
+// console.log(mango.blacklistedEmails); // ["poly@mail.com"]
+// console.log(mango.isBlacklisted('mango@mail.com')); // false
+// console.log(mango.isBlacklisted('poly@mail.com')); // true
