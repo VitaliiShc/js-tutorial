@@ -204,8 +204,58 @@
 // Метод Object.freeze()
 // "Заморожує" вказаний об'єкт - захищає його від будь якої зміни
 
-// Метод Object.assign()
+// // Метод Object.assign()
+// // Дозволяє зробити копію об'єкта (одного або кількох - злиття) зі всіма властивостями в новий об'єкт. Умовно, мутуючий
+// // Object.assign(target, ...sources)
+// // target - цільовий об'єкт (куда копіювати)
+// // sources - вихідні об'єкти (звідки копіювати)
+
+// // Клонування:
+// const obj1 = { a: 1, };
+// const copeObj1 = Object.assign({}, obj1);
+// console.log(copeObj1); // { a: 1 }
+
+// // Злиття
+// const obj2 = { b: 2, };
+// const obj3 = { c: 3 };
+// const obj4 = Object.assign({}, obj1, obj2, obj3);
+// console.log(obj4); // {a: 1, b: 2, c: 3}
+
+// // Додавання нових властивостей до об'екту
+// const obj = { a: 1, };
+// Object.assign(obj, { b: 2, c: 3 });
+// console.log(obj); // {a: 1, b: 2, c: 3} - мутування об'єкту
+
+// // ❗️❗️❗️ Перевірка наявності властивостей
+
+// // Опціональний ланцюжок
+// // Для перевірки, чи є вкладені властивості (об'єкт в об'єкті):
+
+// const user = {
+//   name: 'Vitalii',
+//   address: {
+//     city: 'Kiyv',
+//     street: 'Nyvska',
+//   },
+// };
+
+// // console.log(user.address.city); // 'Kiyv' - якщо властивість є, але якщо властивості немає (закоментовано), то буде помилка 'Cannot read properties of undefined (reading 'city')'; для того, щоб цього не траплялось, використовується опціональний ланцюжок:
+// console.log(user?.address?.city); // undefined - немає, 'Kiyv' - є
+
+// // Оаператор in . Корисно у випадках, коли властивісь є, але вона undefined
+// const user = { name: 'Vitalii', age: undefined };
+// if ('name' in user) {
+//   console.log(user.name); // 'Vitalii'
+// }
+// if ('address' in user) {
+//   console.log(user.address); // ничого не повретає
+// }
+// if ('age' in user) {
+//   console.log(user.age); // undefined (властивість є, але значення не задано)
+// }
 
 // * id: Date.now() - оголошення id по поточної даті в мілісекундах
 
 // ❗️❗️❗️ Масив об'єктів
+
+
