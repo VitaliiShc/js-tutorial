@@ -386,7 +386,7 @@
 // console.log(someWord2); // 'b@n@n@'
 // console.log(someWord.replace('a', '@')); // 'b@nana'
 
-// // ❗️ Метод slice (atartIndex, endIndex) дозволяє створити копію частини рядка (або всього) від startIndex (включно) до endIndex (не включно). Не змінює оригінал.
+// // ❗️ Метод slice (atartIndex, endIndex) дозволяє створити копію частини рядка (або всього) від startIndex (включно) до endIndex (не включно). Не змінює оригінал. Повертає новий масив.
 // const someWord = 'Some Word';
 // console.log(someWord.slice(0, 4)); // 'Some'
 // console.log(someWord.slice(5, someWord.length)); // 'Word' - 'length' повертає довжину рядка, та останній символ має індекс на одиницю менший ніж довжина рядка
@@ -397,11 +397,24 @@
 // console.log(someWord.slice(-1)); // 'd' - останній символ рядка
 // console.log(someWord.slice(-9, -3)); // 'Some W' - повертає значення від індексів, відрахованих з кінця (-9 - 'S', -3 - 'o', але не включно(!), тому останній символ повернутого рядка це 'W')
 
-// // ❗️ Метод trim() видаляє прибіли на початку та кінці строки, та повертає нову строку без початкових та кінцевих пробілів.
+// // ❗️ Метод trim() видаляє пробіли на початку та кінці строки, та повертає нову строку без початкових та кінцевих пробілів.
 // const sameText = '   Text   ';
 // console.log(sameText.length); // 10
 // console.log(sameText.trim().length); // 4
 // console.log(sameText.trim()); // 'Text'
+
+// // ❗️ Метод padStart(targetLength, padString) заповнює рядок символами padString на початку рядка для отримання заданної targetLength довжини рядка. padString - не обов'язковий. Якщо padString занадто довгий, його буде обрізано для досягненя заданої довжини рядка. Метод викликаєтьсяя на рядку.
+// console.log('abc'.padStart(6, 0)); // '000abc'
+// console.log('abc'.padStart(6, '000000')); // '000abc'
+// console.log('abc'.padStart(9, 'foo')); // 'foofooabc'
+// console.log('abc'.padStart(1)); // 'abc'
+
+// // ❗️ Метод padEnd(targetLength, padString) заповнює рядок символами padString на прикінці рядка для отримання заданної targetLength довжини рядка. padString - не обов'язковий. Якщо padString занадто довгий, його буде обрізано для досягненя заданої довжини рядка. Метод викликаєтьсяя на рядку.
+// console.log('abc'.padEnd(6, 0)); // 'abc000'
+// console.log('abc'.padEnd(6, '000000')); // 'abc000'
+// console.log('abc'.padEnd(9, 'foo')); // 'abcfoofoo'
+// console.log('abc'.padEnd(1)); // 'abc'
+
 
 // // ❗️❗️❗️ Логічні оператори.
 // // Відбувається приведення типів операндів до булевих значень (true або false).

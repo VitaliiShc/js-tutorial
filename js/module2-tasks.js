@@ -641,3 +641,87 @@
 // ); // false
 // console.log(includes(['apple', 'plum', 'pear', 'orange'], 'plum')); // true
 // console.log(includes(['apple', 'plum', 'pear', 'orange'], 'kiwi')); // false
+
+// // * Практика
+
+// // 1 Напиши скрипт, який порівняє два масива і виведе у консоль результат чи усі елементи у них однакові
+// const arr1 = [1, 4, 6, 'color', 324, 232, 'list', 11, 9, 'dream', 34, 0, -30];
+// const arr2 = [6, 'dream', -30, 11, 9, 1, 324, 34, 'color', 4, 232, 0, 'list'];
+
+// const arr3 = [4, 232, 6, -30, 'color', 324, 'list', 1, 11, 9, 'dream', 34, 0];
+// const arr4 = ['color', 6, -30, 11, 9, 1, 'dream', 324, 34, 4, 232, 0, 'list'];
+
+// const arr5 = [1, 4, 6, 'color', 'list', 11, 9, 'dream', 34, 0, -30, 'lesson'];
+// const arr6 = [6, 324, 'dream', -30, 9, 8, 34, 'color', 4, 232, 0, 'list', 11];
+
+// const arr7 = [1, 4, 6, 'color', 324, 232, 'list', 11, 9, 'dream', 34, 0, -30];
+// const arr8 = [6, 'dream', -30, 10, 9, 1, 324, 34, 'color', 4, 232, 0, 'list'];
+
+// const arr9 = [4, 6, 'color', 324, 232, 'list', 11, 9, 'dream', 34, 0, -30];
+// const arr0 = [6, 'dream', -30, 11, 9, 1, 324, 34, 'color', 4, 232, 0, 'list'];
+
+// function compareArrs(array1, array2) {
+//   if (array1.length !== array2.length) {
+//     return false;
+//   } else {
+//     for (const elem1 of array1) {
+//       if (!array2.includes(elem1)) {
+//         return false;
+//       }
+//     }
+//   }
+//   return true;
+// }
+// console.log(compareArrs(arr1, arr2));
+// console.log(compareArrs(arr3, arr4));
+// console.log(compareArrs(arr5, arr6));
+// console.log(compareArrs(arr7, arr8));
+// console.log(compareArrs(arr9, arr0));
+
+// Напишіть функцію calculateAverage(), яка приймає довільну кількість аргументів і повертає їхне середне значення. Додати перевірку, що аргументи це числа.
+
+// function calculateAverage() {
+//   let total = 0;
+//   let i = 0;
+//   const arr = [];
+//   for (const elem of Array.from(arguments)) {
+//     if (Number.isNaN(Number(elem))) {
+//     } else {
+//       total += elem;
+//       i += 1;
+//     }
+//   }
+//   return total / i;
+// }
+
+// console.log(calculateAverage(1, 2, 3, 4, 'g', 5));
+
+// // Написати функцію, котра отримує рядок. За допомогою циклу for потрібно виконати підрахунок кільекості символі в рядку
+// function countSymbols(someString) {
+//   console.log(someString.length);
+// }
+// countSymbols('efg;EG;gj a;OGEOG;')
+
+// // Напишить скрипт, який отримає від користувача число (кількість хвилин) і виведе в консоль у іормати годин хвилин. Тобто, якщо користувачя вказав число 70, в консолі отримаємо "01:10"
+
+// function setTime() {
+//   const value = prompt('enter minutes');
+//   let hours = 0;
+//   let minutes = 0;
+
+//   if (Number.isNaN(Number(value))) {
+//     alert(`${value} not a number`);
+//   } else {
+//     hours = String(Math.floor(value / 60)).padStart(2,0);
+//     // if (hours< 10) {
+//     //   hours = '0' + hours;
+//     // }
+//     minutes = String(value % 60).padStart(2, 0);
+//     //  if (minutes < 10) {
+//     //    minutes = '0' + minutes;
+//     //  }
+//     console.log(`${hours}:${minutes}`);
+//   }
+// }
+
+// setTime();
