@@ -2467,3 +2467,339 @@
 //     'female'
 //   )
 // ); // "male" - 12053 ; "female" - 8863
+
+// // * Практика
+
+// // 1
+// // Напишить функцію checkKeyInObject(), яка приймає 2 параметри obj і key. Функця перебфрає об'єкт. Якщо об'єкт має такий ключ - повретає екгуб в іншому випадку - афдіую
+
+// function checkKeyInObject(obj, keyForFind) {
+//   for (const key in obj) {
+//     if (key === keyForFind) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+
+// function checkKeyInObject(obj, keyForFind) {
+//   const allKeys = Object.keys(obj);
+//   if (allKeys.includes(keyForFind)) {
+//     return true;
+//   }
+//   return false;
+// }
+
+// function checkKeyInObject(obj, keyForFind) {
+//   if (Object.keys(obj).includes(keyForFind)) {
+//     return true;
+//   }
+//   return false;
+// }
+
+// function checkKeyInObject(obj, keyForFind) {
+//   return Object.keys(obj).includes(keyForFind) ? true : false;
+// }
+
+// function checkKeyInObject(obj, keyForFind) {
+//   return Object.keys(obj).includes(keyForFind);
+// }
+
+// const user = {
+//   name: 'Vitalii',
+//   car: 'Nissan',
+//   carColor: 'beige',
+// };
+
+// // checkKeyInObject(user, 'car');
+// console.log(checkKeyInObject(user, 'hh'));
+
+// // 2
+// // Додати метод getInfo в об'єкт user, який повертатиме інформацію про користувача у форматі:
+// // 'Name: Peter. Surname: Parker. Age: 22. Position: spider-man.'
+
+// const user = {
+//   name: 'Peter',
+//   surname: 'Parker',
+//   age: 22,
+//   position: 'spider-man',
+// };
+
+// user.getInfo = function () {
+//     return `Name: ${this.name}. Surname: ${this.surname}. Age: ${this.age}. Position: ${this.position}.`;
+// };
+
+// console.log(user.getInfo());
+
+// // 3
+// // Створить об'єкт калькулятор з трьома методами:
+// // read (a, b) - приймає два аргументи та зберігає їх як властивості об'єкта;
+// // sum() - повертає суму збережених значень;
+// // mult() - перемножує збережені значення та повертає результат
+
+// // const calc = {
+// //   read(a, b) {
+// //     this.a = a;
+// //     this.b = b;
+// //   },
+
+// //   sum() {
+// //     return this.a + this.b;
+// //   },
+
+// //   mult() {
+// //     return this.a * this.b;
+// //   },
+// // };
+
+// // calc.read(2, 3);
+// // console.log(calc.sum());
+// // console.log(calc.mult());
+
+// const calc = {
+//   read(a, b) {
+//     this.a = a;
+//     this.b = b;
+//   },
+
+//   sum(a, b) {
+//     this.read(a, b);
+//     return this.a + this.b;
+//   },
+
+//   mult(a, b) {
+//     this.read(a, b);
+//     return this.a * this.b;
+//   },
+// };
+
+// console.log(calc.sum(3, 5));
+// console.log(calc.mult(3, 5));
+
+// // 4
+// // Напишить функцію upduteObject, яка приймає об'єкт і ключі (ключів може бути довільна кількість), яки необхідно видалити з об'екту. Функція повертає новий об'єкт без зазначених параметрів
+// // ({a:1, b:2}, 'b') => {a:1}
+
+// const upduteObject = (obj, ...keys) => {
+//   // const newObj = Object.assign({}, obj);
+//     const newObj = { ...obj };
+//     keys.forEach(element => delete newObj[element]);
+//     return newObj;
+// }
+
+// console.log(upduteObject({ a: 1, b: 2, c:3, d:4 }, 'b', 'd'));
+
+// // 5
+// // Напишить функцію, яка приймає як параметр об'єкт і повертає масив значень у форматі [[key, value], [key, value], ...].
+
+// const user = {
+//   name: 'Peter',
+//   surname: 'Parker',
+//   age: 22,
+//   position: 'spider-man',
+// };
+
+// function foo(obj) {
+//     return Object.entries(obj);
+// }
+
+// console.log(foo(user))
+
+// // 6
+// // Напишить функцію getPropertyValues(), яка приймає масив об'єктів та ключ, і повертає масив значень цього ключа у кожному об'екті.
+
+// const myArr = [
+//   { name: 'John', age: 38 },
+//   { name: 'Jane', age: 29 },
+//   { name: 'Bob', age: 25 },
+//   { name: 'Max', age: 40 },
+// ];
+
+// // function getPropertyValues(arr, key) {
+// //   const values = [];
+// //   for (const elem of arr) {
+// //     values.push(elem[key]);
+// //   }
+// //   return values;
+// // }
+
+// function getPropertyValues(arr, key) {
+//   const values = arr.map(item => item[key]);
+
+//   return values;
+// }
+
+// console.log(getPropertyValues(myArr, 'age'));
+
+// // 7
+// // Виконайте смортування масиву цін за спадінням та зростанням
+// const prices = [1000, 240, 670, 360, 89, 20];
+// const ascendingPrices = [...prices].sort((a, b) => a - b);
+// console.log(ascendingPrices)
+// const descendingPrices = [...prices].sort((a, b) => b - a);
+// console.log(descendingPrices)
+
+// 8
+// Напишить функцію sayHi(), яка приймає в якості параеметра масив імен, перебирає масив і додає до кожного ім'я привітання тиа повертає новий масив ['Ivan, привіт!', 'Maria, привіт!', 'Anna, привіт!']
+// const names = ['Ivan', 'Maria', 'Anna'];
+// function sayHi(arr) {
+//   const arr0 = [];
+//   for (let name of names) {
+//     arr0.push(`${name}, привіт!`);
+//   }
+//   console.log(arr0);
+// }
+// sayHi(names);
+
+// const names = ['Ivan', 'Maria', 'Anna'];
+// function sayHi(arr) {
+//   // const arr0 = arr.map(name => name + ', привіт!');
+//   const arr0 = arr.map(name => `${name}, привіт!`);
+//   console.log(arr0);
+// }
+// sayHi(names);
+
+// // 9
+// // Напишить стрілочну функціюб яка буде перевіряти чи містить масив хоча б одне число більше 20.
+// const numbers = [20, 16, 11, 13, 15, 21];
+// const res = numbers.some(number => number > 20);
+
+// console.log(res);
+
+// // 10
+// // Напишить стрілочну функцію яка буде перевіряти чи всі студенти у масиві старши 18 років.
+// const students = [
+//   { name: 'John', age: 19 },
+//   { name: 'Jane', age: 19 },
+//   { name: 'Bob', age: 22 },
+//   { name: 'Max', age: 20 },
+// ];
+
+// const res = students.every(student => student.age > 18);
+// console.log(res);
+
+// // 11
+// // Зібрати в allTopics масив всіх предметів всіх курсів. Виконати фільтрацію, залишивши в allTopics тільки унікальні елементи.
+
+// const courses = [
+//   {
+//     name: 'Basic HTML + CSS',
+//     topics: ['VSCode', 'HTML', 'CSS', 'GitHub', 'GitHubDesctop'],
+//   },
+//   {
+//     name: 'Intermediate HTML + CSS',
+//     topics: ['VSCode', 'HTML', 'CSS', 'GitHub', 'Git', 'Terminal'],
+//   },
+//   {
+//     name: 'Basic JavaScript',
+//     topics: [
+//       'VSCode',
+//       'Type system',
+//       'Loops',
+//       'Function',
+//       'Git',
+//       'Conditions',
+//       'Classes',
+//       'GitHub',
+//       'DOM',
+//     ],
+//   },
+//   {
+//     name: 'Intermediate JavaScript',
+//     topics: [
+//       'VSCode',
+//       'NPM',
+//       'Bundlers',
+//       'Transpiling',
+//       'Git',
+//       'Promises',
+//       'AJAX',
+//       'GitHub',
+//     ],
+//   },
+// ];
+
+// // function collectAllTopics(arr) {
+// //     const topics = arr.flatMap(course => course.topics);
+// //     const allTopics = topics.filter((el, idx, arr) => arr.indexOf(el) === idx);
+// //     console.log(allTopics);
+// // }
+// // collectAllTopics(courses);
+
+//   const allTopics = courses
+//     .flatMap(course => course.topics)
+//     .filter((el, idx, arr) => arr.indexOf(el) === idx);
+//   console.log(allTopics);
+
+// // 12
+// // У нас є масив користувачів, кожен з яких має поле id та name. Знайти той, де id = 1.
+
+// const users = [
+//   { id: 1, name: 'John' },
+//   { id: 2, name: 'Pete' },
+//   { id: 3, name: 'Mary' },
+// ];
+
+// function checkId(arr) {
+//         // const resName = arr.find(user => user.id === 1);
+//         // console.log(resName.name);
+//     console.log(arr.find(user => user.id === 1).name);
+// }
+// checkId(users);
+
+// // 13
+// // Напишить функцію getTotalBoysYears() яка порахує загальний вік хлопців
+
+// const friends = [
+//   { passport: '123', name: 'John', age: 22, sex: 'm' },
+//   { passport: '234', name: 'Bob', age: 28, sex: 'm' },
+//   { passport: '345', name: 'Max', age: 39, sex: 'm' },
+//   { passport: '456', name: 'Mary', age: 24, sex: 'f' },
+//   { passport: '567', name: 'Anna', age: 35, sex: 'f' },
+//   { passport: '678', name: 'Monica', age: 34, sex: 'f' },
+// ];
+
+// function getTotalBoysYears(arr) {
+// //   const boys = arr.filter(friend => friend.sex === 'm');
+// //   const totalBoysYears = boys.reduce((total, boy) => total + boy.age, 0);
+//     //   return totalBoysYears;
+//       return arr
+//         .filter(friend => friend.sex === 'm')
+//         .reduce((total, friend) => total + friend.age, 0);
+// }
+// console.log(getTotalBoysYears(friends));
+
+// // 14
+// // Маємо масив об'єктів, який представляє список замовлень. Перевірьте, чи всі замовлення виконані та повернить список товарів з усіх виконаних замовлень.
+
+// const orders = [
+//   { id: 1, products: ['Milk', 'Bread'], status: 'complited' },
+//   { id: 2, products: ['Eggs', 'Juice'], status: 'processing' },
+//   {
+//     id: 3,
+//     products: ['Pasta', 'Spices', 'Milk', 'Bread'],
+//     status: 'complited',
+//   },
+// ];
+
+// const complited = orders.every(order => order.status === 'complited');
+// console.log(complited);
+
+// const products = orders
+//   .filter(order => order.status === 'complited')
+//   .flatMap(order => order.products)
+//   .filter((el, idx, arr) => arr.indexOf(el) === idx);
+// console.log(products);
+
+// // 15
+// // Маємо масив об'єктів, який представляє перелік товарів та їх цін. Потрібно знай  ти смуму вартості всіх товарівб яки коштують більше 10.
+// const products = [
+//   { name: 'Milk', price: 20 },
+//   { name: 'Bread', price: 10 },
+//   { name: 'Eggs', price: 15 },
+// ];
+
+// const total = products
+//   .filter(product => product.price > 10)
+//   .reduce((acc, product) => acc + product.price, 0);
+// console.log(total);
