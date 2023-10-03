@@ -2803,3 +2803,5 @@
 //   .filter(product => product.price > 10)
 //   .reduce((acc, product) => acc + product.price, 0);
 // console.log(total);
+
+console.log();

@@ -1,21 +1,21 @@
 // Приклад 1
 
-// console.log(document);
+console.log(document);
 
-// const body = document.body;
-// console.log(body);
+const body = document.body;
+console.log(body);
 
-// const list = document.querySelector('.list');
-// console.log(list);
+const list = document.querySelector('.list');
+console.log(list);
 
-// const firstListItem = list.firstElementChild;
-// console.log(firstListItem);
+const firstListItem = list.firstElementChild;
+console.log(firstListItem);
 
-// const lastListItem = list.lastElementChild;
-// console.log(lastListItem);
+const lastListItem = list.lastElementChild;
+console.log(lastListItem);
 
-// const listItems = list.children;
-// console.log(listItems);
+const listItems = list.children;
+console.log(listItems);
 
 // Приклад 2
 // const listWithId = document.querySelector('#menu');
