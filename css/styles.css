@@ -1,6 +1,11 @@
 ul {
 list-style: none;
 }
+
 .js-title-color{
     color: red;
+}
+
+.js-img{
+    width: 320px;
 }
