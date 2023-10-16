@@ -266,7 +266,7 @@
 
 // // ❗️ Math.pow(base, exponent) зведення в ступінь
 // console.log(Math.pow(2, 3)); // 8 (2 в ступені 3 дорівнює 8)
-// // олд-скульний метод возведення в ступень (з експоненою ( ** )):
+// // олд-скульний метод возведення в ступень (з експонентом ( ** )):
 // console.log(2 ** 3); // 8 (2 в ступені 3 дорівнює 8)
 // console.log(Math.pow(4, 0.5)); // 2 (4 с ступені 0.5, тобто квадратний корінь з 4 дорівнює 2)
 // console.log(Math.pow(8, 1 / 3)); // 2 (кубічний корінь з 8)
@@ -391,9 +391,9 @@
 // console.log(someWord.slice(0, 4)); // 'Some'
 // console.log(someWord.slice(5, someWord.length)); // 'Word' - 'length' повертає довжину рядка, та останній символ має індекс на одиницю менший ніж довжина рядка
 // console.log(someWord.slice(0, someWord.length)); // 'Some Word' - повна копія рядка
-// console.log(someWord.slice(0)); // 'Some Word' - повертає все від індекса 0 до кінця
-// console.log(someWord.slice(5)); // 'Word' - повертає все від індекса 5 до кінця
-// console.log(someWord.slice(-4)); // 'Word' - повертає значення з кінця - від -4 індекса - до кінця рядка (відраховує з кінця)
+// console.log(someWord.slice(0)); // 'Some Word' - повертає все від індексу 0 до кінця
+// console.log(someWord.slice(5)); // 'Word' - повертає все від індексу 5 до кінця
+// console.log(someWord.slice(-4)); // 'Word' - повертає значення з кінця - від -4 індексу - до кінця рядка (відраховує з кінця)
 // console.log(someWord.slice(-1)); // 'd' - останній символ рядка
 // console.log(someWord.slice(-9, -3)); // 'Some W' - повертає значення від індексів, відрахованих з кінця (-9 - 'S', -3 - 'o', але не включно(!), тому останній символ повернутого рядка це 'W')
 
@@ -403,18 +403,17 @@
 // console.log(sameText.trim().length); // 4
 // console.log(sameText.trim()); // 'Text'
 
-// // ❗️ Метод padStart(targetLength, padString) заповнює рядок символами padString на початку рядка для отримання заданної targetLength довжини рядка. padString - не обов'язковий. Якщо padString занадто довгий, його буде обрізано для досягненя заданої довжини рядка. Метод викликаєтьсяя на рядку.
+// // ❗️ Метод padStart(targetLength, padString) заповнює рядок символами padString на початку рядка для отримання заданої targetLength довжини рядка. padString - не обов'язковий. Якщо padString занадто довгий, його буде обрізано для досягнення заданої довжини рядка. Метод викликається на рядку.
 // console.log('abc'.padStart(6, 0)); // '000abc'
 // console.log('abc'.padStart(6, '000000')); // '000abc'
 // console.log('abc'.padStart(9, 'foo')); // 'foofooabc'
 // console.log('abc'.padStart(1)); // 'abc'
 
-// // ❗️ Метод padEnd(targetLength, padString) заповнює рядок символами padString на прикінці рядка для отримання заданної targetLength довжини рядка. padString - не обов'язковий. Якщо padString занадто довгий, його буде обрізано для досягненя заданої довжини рядка. Метод викликаєтьсяя на рядку.
+// // ❗️ Метод padEnd(targetLength, padString) заповнює рядок символами padString на прикінці рядка для отримання заданої targetLength довжини рядка. padString - не обов'язковий. Якщо padString занадто довгий, його буде обрізано для досягнення заданої довжини рядка. Метод викликається на рядку.
 // console.log('abc'.padEnd(6, 0)); // 'abc000'
 // console.log('abc'.padEnd(6, '000000')); // 'abc000'
 // console.log('abc'.padEnd(9, 'foo')); // 'abcfoofoo'
 // console.log('abc'.padEnd(1)); // 'abc'
-
 
 // // ❗️❗️❗️ Логічні оператори.
 // // Відбувається приведення типів операндів до булевих значень (true або false).
