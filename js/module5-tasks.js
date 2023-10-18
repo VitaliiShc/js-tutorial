@@ -808,3 +808,69 @@
 // console.log(mango.blacklistedEmails); // ["poly@mail.com"]
 // console.log(mango.isBlacklisted('mango@mail.com')); // false
 // console.log(mango.isBlacklisted('poly@mail.com')); // true
+
+// // 📜📜📜 Практика
+
+// // 📜 1
+// // Є об'єкт і функція для підрахунку суми чисел. Виведить у консоль результат функції, якщо a = 3, b = 5.
+
+// var obj = { num: 2 };
+
+// function add(a, b) {
+//   return this.num + a + b;
+// }
+// // не вірно, яле працює
+// // obj.res = add;
+// // console.log(obj.res(3, 5));
+
+// console.log(add.call(obj, 3, 5));
+// console.log(add.apply(obj,[3, 5]));
+
+// const res = add.bind(obj, 3, 5);
+// console.log(res());
+
+// // 📜 2
+// // Є два об'єктиб які описують деякі характеристики телефонів. Потрібно викликати метод showInfo, щоб він логував інформацію про кожний телефон, передаючи аргументом країну-виробник телефону ('HUAWEI' - 'China', 'SAMSUNG' - 'South Korea').
+
+// const tel1 = {
+//   regNumber: 'A1B2D3',
+//   brand: 'HUAWEI',
+//   showInfo(country) {
+//     console.log(`${country} ${this.regNumber} ${this.brand}`);
+//   },
+// };
+// const tel2 = {
+//   regNumber: 'B2D3C4',
+//   brand: 'SAMSUNG',
+// };
+
+// tel1.showInfo('China');
+// tel1.showInfo.call(tel2, 'South Korea');
+// tel1.showInfo.apply(tel2, ['South Korea']);
+
+// const res = tel1.showInfo.bind(tel2, 'South Korea');
+// res();
+
+// // 📜 3
+// 1. Створить об'єкт car з трьома властивостями:
+// carBrand: 'Audi Q3'
+// price: 23000
+// метолд getData() котрий буде логувати рядок: 'Audi Q3 за 23000 $'
+// 2. Напишіть функцію makeMessage(callback), котра отримує в якості параметра колбек-функцію getData() і логує повідомлення 'Ви замовили ${callback()}'
+
+const car = {
+  carBrand: 'Audi Q3',
+  price: 23000,
+  getData() {
+    // console.log(`${this.carBrand} за ${this.price} $`);
+    return `${this.carBrand} за ${this.price} $`;
+  },
+};
+car.getData();
+
+function makeMessage(callback) {
+  // console.log(`Ви замовили ${callback}`);
+  console.log(`Ви замовили ${callback()}`);
+}
+
+makeMessage(car.getData.bind(car));

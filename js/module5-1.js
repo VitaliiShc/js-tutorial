@@ -46,28 +46,28 @@
 // // Або коли потрібно зв'язати якісь об'єкт та функцію, в тілі якої використовується контекст this, але немає явної сприв'язки до об'екту, в контексті якого вана має бути виконана.
 // Щоб сберегти зв'язок з об'єктом, використовуються методи функції. Якщо функцію потрібно викликати як метод об'єкта, при цьому функція не є методом цього об'єкта, використовуються методи call(), apply(), bind() для функції.
 
-const user = {
-  name: 'Vitalii',
-  surname: 'Shchukin',
-  // створено метод об'єкта, який повретає повне ім'я
-  getFullName() {
-    return `${this.name} ${this.surname}`;
-  },
-};
+// const user = {
+//   name: 'Vitalii',
+//   surname: 'Shchukin',
+//   // створено метод об'єкта, який повретає повне ім'я
+//   getFullName() {
+//     return `${this.name} ${this.surname}`;
+//   },
+// };
 
-// console.log(user.getFullName()); // 'Vitalii Shchukin'
-// console.log(user.getFullName); // getFullName() {return `${this.name} ${this.surname}`;} - отримуємо саме тіло функції з пам'яті
+// // console.log(user.getFullName()); // 'Vitalii Shchukin'
+// // console.log(user.getFullName); // getFullName() {return `${this.name} ${this.surname}`;} - отримуємо саме тіло функції з пам'яті
 
-// створено функцію, яка виводить привітання для юзера з колбеку
-function makeMessage(callback) {
-  console.log(callback); // отримуємо тіло колбека ( getFullName() {return `${this.name} ${this.surname}`;} )
-  console.log(this); // underfind, тому що звй'язок з об'єктом втрачено
-  console.log(`Hello, ${callback}`); // 'Hello, __тіло колбека__'
-  // callback() - виклик методцу getFullName без об'єкта
-  console.log(`Hello, ${callback()}`); // помилка!
-}
+// // створено функцію, яка виводить привітання для юзера з колбеку
+// function makeMessage(callback) {
+//   console.log(callback); // отримуємо тіло колбека ( getFullName() {return `${this.name} ${this.surname}`;} )
+//   console.log(this); // underfind, тому що звй'язок з об'єктом втрачено
+//   console.log(`Hello, ${callback}`); // 'Hello, __тіло колбека__'
+//   // callback() - виклик методцу getFullName без об'єкта
+//   console.log(`Hello, ${callback()}`); // помилка!
+// }
 
-makeMessage(user.getFullName); 
+// makeMessage(user.getFullName); 
 
 // // ❗️ Метод call()
 // // foo.call(obj, aarg1, arg2, ...)
