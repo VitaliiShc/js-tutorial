@@ -852,25 +852,309 @@
 // res();
 
 // // 📜 3
-// 1. Створить об'єкт car з трьома властивостями:
-// carBrand: 'Audi Q3'
-// price: 23000
-// метолд getData() котрий буде логувати рядок: 'Audi Q3 за 23000 $'
-// 2. Напишіть функцію makeMessage(callback), котра отримує в якості параметра колбек-функцію getData() і логує повідомлення 'Ви замовили ${callback()}'
+// // 1. Створить об'єкт car з трьома властивостями:
+// // carBrand: 'Audi Q3'
+// // price: 23000
+// // метолд getData() котрий буде логувати рядок: 'Audi Q3 за 23000 $'
+// // 2. Напишіть функцію makeMessage(callback), котра отримує в якості параметра колбек-функцію getData() і логує повідомлення 'Ви замовили ${callback()}'
 
-const car = {
-  carBrand: 'Audi Q3',
-  price: 23000,
-  getData() {
-    // console.log(`${this.carBrand} за ${this.price} $`);
-    return `${this.carBrand} за ${this.price} $`;
-  },
-};
-car.getData();
+// const car = {
+//   carBrand: 'Audi Q3',
+//   price: 23000,
+//   getData() {
+//     // console.log(`${this.carBrand} за ${this.price} $`);
+//     return `${this.carBrand} за ${this.price} $`;
+//   },
+// };
+// car.getData();
 
-function makeMessage(callback) {
-  // console.log(`Ви замовили ${callback}`);
-  console.log(`Ви замовили ${callback()}`);
-}
+// function makeMessage(callback) {
+//   // console.log(`Ви замовили ${callback}`);
+//   console.log(`Ви замовили ${callback()}`);
+// }
 
-makeMessage(car.getData.bind(car));
+// makeMessage(car.getData.bind(car));
+
+// // 📜 4
+// // Наепишить код таким чином, щоб об'єкт apples став прототипом для об'єкта fuji.
+// // Перевірте, чи став об'єкт apples прототипом для об'єкта fuji.
+// // Додайте об'єкту fuji властивість color: 'pink' і виведить його у консоль.
+// // Виведить у консоль значення властивості type для об'єкту fuji.
+// // Перевірте і виведіть у консоль чи є властивість vitamins власною властивістю об'єкту apples.
+// // Перевірте і виведіть у консоль чи є властивість cookingMethod власною властивістю об'єкту fuji.
+
+// const apples = {
+//   type: 'fruit',
+//     cookingMethod: ['jam', 'juice', 'baked', 'dried', 'fresh'],
+//   vitamins: ['A', 'B1', 'B2', 'E'],
+// };
+
+// const fuji = Object.create(apples);
+// console.log(fuji);
+// console.log(apples.isPrototypeOf(fuji)); // true
+
+// fuji.color = 'pink'
+// console.log(fuji.color); // 'pink'
+
+// console.log(fuji.type); // 'fruit'
+
+// console.log(apples.hasOwnProperty('vitamins')); // true
+// console.log(fuji.hasOwnProperty('cookingMethod')); // false
+
+// // 📜 5
+// // Створити клас для калькулятора, який має такі методи:
+// // метод number, який наубває початкового значення для наступних операцій
+// // метод getResult, який повертає фінальний результат усіх операцій, проведених з числом
+// // методи add, substruct, divide, multiply
+// // Об'єкт класу приймає число і може проводити з ним послідовні операції у вигляді ланцюжка
+
+// class Calculator {
+//   constructor() {
+//     this.result = 0;
+//   }
+//   number(num) {
+//     this.result = num;
+//     return this;
+//   }
+
+//   add(num) {
+//     this.result += num;
+//     return this;
+//   }
+//   substruct(num) {
+//     this.result -= num;
+//     return this;
+//   }
+//   divide(num) {
+//     this.result /= num;
+//     return this;
+//   }
+//   multiply(num) {
+//     this.result *= num;
+//     return this;
+//   }
+
+//   getResult() {
+//     return this.result;
+//   }
+// }
+
+// const operation = new Calculator();
+
+// const resAdd = operation.number(5).add(5).getResult();
+// console.log(resAdd); // 10
+
+// const resSubstruct = operation.number(5).substruct(5).getResult();
+// console.log(resSubstruct); // 0
+
+// const resDivide = operation.number(5).divide(5).getResult();
+// console.log(resDivide); // 1
+
+// const resMultiply = operation.number(5).multiply(5).getResult();
+// console.log(resMultiply); // 25
+
+// // 📜 6
+// // Напиши клас Rectangle, який створює об'єкт з властивостями height та width і методом calculateArea() для пфдрвхунку площі прямокутника.
+
+// class Rectangle {
+//   constructor(height, width) {
+//     this.height = height;
+//     this.width = width;
+//   }
+//   calculateArea() {
+//     return this.height * this.width;
+//   }
+// }
+
+// const rect1 = new Rectangle(5, 10)
+// console.log(rect1.calculateArea())
+
+// // 📜 7
+// // Створить клас Car, який має конструктор для зберігання марки та року виробництва автомобіля. Додайте метод, який обчислює вік автомобіляна основі поточного року та року виробництва і виведе в консорль рядок 'Вік автомобіля: age років'.
+
+// // let currentYear =  Date().getFullYear();
+// // console.log(new Date().getFullYear());
+
+// class Car {
+//   constructor(model, made) {
+//     this.model = model;
+//     this.made = made;
+//   }
+
+//   getAge() {
+//     console.log(
+//       `Вік автомобіля: ${new Date().getFullYear() - this.made} років`
+//     );
+//   }
+// }
+
+// const car1 = new Car('Nissan', 2011)
+// car1.getAge()
+
+// // 📜 7
+// // Напиши клас Client, який створбєж об'єкт з властивостями login та email.
+// // Оголоси приватні властивості #login та #email, доступ до яких зроби через гетер та сетер login та email.
+
+// class Client {
+//   #login;
+//   #email;
+//   constructor(login, email) {
+//     this.#login = login;
+//     this.#email = email;
+//   }
+
+//   get login() {
+//     return this.#login;
+//   }
+
+//   set login(newLogin) {
+//     if (newLogin) {
+//       this.#login = newLogin;
+//     }
+//   }
+
+//   get email() {
+//     return this.#email;
+//   }
+
+//   set email(newEmail) {
+//     if (newEmail) {
+//       this.#email = newEmail;
+//     }
+//   }
+// }
+
+// const client1 = new Client('Bob', 'bob@em.el')
+// console.log(client1);
+// console.log(client1.login);
+// client1.login = '';
+// console.log(client1.login);
+
+// console.log(client1);
+// console.log(client1.email);
+// client1.email = '';
+// console.log(client1.email);
+
+// // 📜 8
+// // Створи клас Phone, який створює об'єкт з властивістю price.
+// // Додай статичну властивість MAX_PRICE зі значенням 4000 - максимально допустима ціна телефону.
+// // Оголоси приватну властивість price, доступ до якої буде через геттер та сеттер.
+// // Додай сеттеру price перевірку значення параметра newPrice, що передається. Якщо воно більше за MAX_PRICE, сеттер нічого не робить, а якщо менше або дорівнює, то перезаписує ціну телефона.
+
+// class Phone {
+//   static MAX_PRICE = 4000;
+//   #price;
+//   constructor(price) {
+//     this.#price = price;
+//   }
+
+//   get price() {
+//     return this.#price;
+//   }
+
+//   set price(newPrice) {
+//     if (newPrice <= Phone.MAX_PRICE) {
+//       this.#price = newPrice;
+//     }
+//   }
+// }
+
+// const phone1 = new Phone(2000);
+// console.log(phone1.price); // 2000
+// phone1.price = 4000;
+// console.log(phone1.price); // 4000
+// phone1.price = 5000;
+// console.log(phone1.price); // 4000
+
+// // 📜 9
+// // Створить клас BankAccount, який має конструктор для зберігання номеру рахунку та балансу. Додайте методи:
+// // withdraw - метод для зняття готівки. Отримує в якості аргументу суму готівки, котру потрібно зняти. Готівку можна зняти за умови, що баланс більше або дорівнює сумі, котру хоче зняти користувач. Виводить повідомлення: 'Знято 100 грн. Залишок на рахунку: 3000 грн' або 'Недостатньо коштів на рахунку'.
+// // deposit - метод для поповнення балансу. Отримує в якості аргументу суму, котру користувач хоче покласти на рахунок. Виводить повідомлення: 'Поповнено 100 грн. Залишок на рахунку: 3100 грн'.
+// // checkBalance - метод для преревірки балансу. Виводить повідомлення: 'Залишок на рахунку: 3100 грн'.
+
+// class BankAccount {
+//   constructor({ account, balance }) {
+//     this.account = account;
+//     this.balance = balance;
+//   }
+//   checkBalance() {
+//     console.log(`Залишок на рахунку: ${this.balance} грн`);
+//   }
+
+//   withdraw(summ) {
+//     if (summ > this.balance) {
+//       console.log(`Недостатньо коштів на рахунку`);
+//       return;
+//     }
+//     this.balance -= summ;
+//     console.log(`Знято ${summ} грн. Залишок на рахунку: ${this.balance} грн`);
+//   }
+
+//   deposit(summ) {
+//     this.balance += summ;
+//     console.log(
+//       `Поповнено ${summ} грн. Залишок на рахунку: ${this.balance} грн`
+//     );
+//   }
+// }
+
+// const acc1 = new BankAccount({ account: 123, balance: 3000 });
+// console.log(acc1);
+// acc1.checkBalance();
+// acc1.deposit(100);
+// acc1.withdraw(4000);
+// acc1.withdraw(100);
+
+// // 📜 10
+// // Написати клас StudentList, котрий має приватну властивість students - масив для зберігання іиен студентів.
+// // Додайте метод addStudent, який отримує аргуметом ім'я студента та додає його в масив students (в масиві зберігаються тільки унікальні імена) та виводить рядок 'Студента student додано до списку' або 'Студент student вже є у списку', якщо такий студент вже є.
+// // Додайте метод removeStudent, який отримує аргументом ім'я студента та видаляє студента з масиву students, якщо такий є, та виводить в консоль рядок 'Студента student видалено зі списку', або 'Студента student не знайдено у списку'.
+// // Долдайте метод getStudents, який виводить масив всіх студентів.
+// // Додайте метод clearList, який очищає масив студентів і виводить повідомлення 'Список студентів очищено'.
+
+// class StudentList {
+//   #students;
+
+//   constructor() {
+//     this.#students = [];
+//   }
+
+//   addStudent(student) {
+//     if (this.#students.includes(student)) {
+//       console.log(`Студент ${student} вже є в списку`);
+//       return;
+//     }
+//     this.#students.push(student);
+//     console.log(`Студента ${student} додано до списку`);
+//   }
+//   removeStudent(student) {
+//     const idx = this.#students.indexOf(student);
+//     if (!!~idx) {
+//       this.#students.splice(idx, 1);
+//         console.log(`Студента ${student} видалено зі списку`);
+//         return
+//     }
+//     console.log(`Студента ${student} не знайдено в списку`);
+//   }
+
+//   getStudents() {
+//     console.log(this.#students);
+//   }
+
+//   clearList() {
+//     this.#students = [];
+//     console.log(`Список студентів очищено`);
+//   }
+// }
+
+// const newList1 = new StudentList();
+// newList1.addStudent('Bob');
+// newList1.addStudent('Bob');
+// newList1.addStudent('Mango');
+// newList1.addStudent('Poly');
+// // console.log(newList1);
+// // newList1.clearList()
+// // newList1.removeStudent('Bob');
+// // newList1.removeStudent('Ajax');
+// newList1.getStudents();
+

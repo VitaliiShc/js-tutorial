@@ -1,4 +1,7 @@
 // // ❗️❗️❗️ DOM
+// // ❗️ DOM - Document Object Model - Ою'єктна модель документа - незалежний від мови інтерфейсдля роботи з HTML-документом. З'єднує сторинку з мовою програмування за допомогою набору методів та властивостей.
+// // Рушій браузера за допомогою HTML-парсера перетворює HTML в DOM у вигляди деревоподібної структури з відносинами 'батько-дитина'.
+// // Доступ до DOM почінається з об'єкта 'document'.
 
 // // ❗️❗️❗️ Звернення до елементу в DOM - отримання посилання на цей елемент:
 
@@ -20,9 +23,12 @@
 // console.dir(titleElClass.textContent);
 
 // // ❗️ Властивість element.classList. Використовується для дій з переліком класів елементу. Повертає псевдо-масив класів. Для виконання дій використовуються методи, найчастіше:
-// // ❗️ add() - додавання класу,
-// // ❗️ remove() - видалення класу,
-// // ❗️ toggle() - додавання класу, якщо немає, або видалення - якщо є
+// // ❗️ contains(cls) - перевіряє наявність сласу cls у елемента - повертає true або false,
+// // ❗️ add(cls) - додавання класу cls,
+// // ❗️ remove(cls) - видалення класу cls,
+// // ❗️ toggle(cls) - додавання класу cls, якщо немає, або видалення - якщо є,
+// // ❗️ replace(oldCls, newCls) - змінює існуючій клас oldCls на новий newCls.
+
 // console.log(titleElClass.classList); // ['js-title']
 
 // titleElClass.classList.add('js-title-color');
@@ -193,75 +199,75 @@
 // // Маємо масив автомогбілів (нибито прийшов від бек-енду, тому кількість нам не відома).
 // // Потрібно побудувати перелік авто на веб-сторінці. В HTML потрібно зробити контейнер для перелику - ul -, куда будемо додавати авто зі списку
 
-const cars = [
-  {
-    name: 'Honda',
-    model: 'Civic',
-    price: 40000,
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCyRUtbM3JYIt4Fxv-j573ToV7XtOKEJOsBQ&usqp=CAU',
-  },
-  {
-    name: 'Nissan',
-    model: 'Note',
-    price: 35000,
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdDoAEcu5nwrBwVitRS0YQjkF1vQhd3zqSA&usqp=CAU',
-  },
-  {
-    name: 'Audi',
-    model: 'Q7',
-    price: 45000,
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzYtF86eFpC02gfv5z-JsjGb2MufIP171PmA&usqp=CAU',
-  },
-  {
-    id: 4,
-    name: 'Mersedes',
-    model: 'A 200',
-    price: 25000,
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZA6v1ly2IC52Eno7aNWqhNAGOR5zrc6s7hw&usqp=CAU',
-  },
-];
+// const cars = [
+//   {
+//     name: 'Honda',
+//     model: 'Civic',
+//     price: 40000,
+//     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCyRUtbM3JYIt4Fxv-j573ToV7XtOKEJOsBQ&usqp=CAU',
+//   },
+//   {
+//     name: 'Nissan',
+//     model: 'Note',
+//     price: 35000,
+//     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdDoAEcu5nwrBwVitRS0YQjkF1vQhd3zqSA&usqp=CAU',
+//   },
+//   {
+//     name: 'Audi',
+//     model: 'Q7',
+//     price: 45000,
+//     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzYtF86eFpC02gfv5z-JsjGb2MufIP171PmA&usqp=CAU',
+//   },
+//   {
+//     id: 4,
+//     name: 'Mersedes',
+//     model: 'A 200',
+//     price: 25000,
+//     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZA6v1ly2IC52Eno7aNWqhNAGOR5zrc6s7hw&usqp=CAU',
+//   },
+// ];
 
-const container = document.querySelector('.js-container');
-// console.dir(container);
+// const container = document.querySelector('.js-container');
+// // console.dir(container);
 
-// // важкий шлях:
-// cars.forEach(({ id, name, model, price, img }) => {
-//   // деструктуризовали
-//   const markup = `<li>
+// // // важкий шлях:
+// // cars.forEach(({ id, name, model, price, img }) => {
+// //   // деструктуризовали
+// //   const markup = `<li>
+// //         <img src="${img}" alt="${name}" class='js-img'>
+// //         <h2>Name: ${name}</h2>
+// //         <h3>Model: ${model}</h3>
+// //         <p>Price: ${price}</p>
+// //       </li>`;
+// //   container.insertAdjacentHTML('beforeend', markup); // помещаемо в документ - куди та що
+// // });
+// // Виконуеться додавання по одному елементу в DOM, та при кожномуу дподанні перемалбовується сторинка (reflow), що витрачає ресурси. Тому така практика не є гарною.
+// // Потрібно робити так, щоб спочатку створити об'ект для додання зі всіма елементами, ита додати одразу все однім об'ектом.
+
+// const markup = cars
+//   .map(
+//     ({ id = 'none', name, model, price, img }) => `<li data-id='${id}'>
 //         <img src="${img}" alt="${name}" class='js-img'>
 //         <h2>Name: ${name}</h2>
 //         <h3>Model: ${model}</h3>
 //         <p>Price: ${price}</p>
-//       </li>`;
-//   container.insertAdjacentHTML('beforeend', markup); // помещаемо в документ - куди та що
+//       </li>`
+//   )
+//   .join(''); // отримали масив елементів для додання, але нам потрібен рядок (глобально HTML-документ - це великий рядок), щоб додати його в DOM
+// console.dir(markup);
+// container.insertAdjacentHTML('beforeend', markup); // додаемо один рядок зі всіма елементами в HTML - reflow виконано один раз
+
+// // Видалення всього списку:
+// const containerToDel = document.querySelector('.js-container');
+// // [...containerToDel.children].forEach(item => item.remove()); // видалення по черзі, тому кожного разу перемальовується DOM
+
+// // для видалення всього за одне звернення до DOM, використовується властивысть innerHTML:
+// // containerToDel.innerHTML = ''; // все що було замінити на пустий рядок
+
+// // Якщо потрібно видалити елемент за певнима критеріями, то використовується foeEach. Наприклад, потрібно видалити елемент, у якого є атрибут id
+// [...containerToDel.children].forEach(item => {
+//   console.log(item.dataset.id);
+//   if (item.dataset.id !== 'none') {
+//     item.remove();
+//   }
 // });
-// Виконуеться додавання по одному елементу в DOM, та при кожномуу дподанні перемалбовується сторинка (reflow), що витрачає ресурси. Тому така практика не є гарною.
-// Потрібно робити так, щоб спочатку створити об'ект для додання зі всіма елементами, ита додати одразу все однім об'ектом.
-
-const markup = cars
-  .map(
-    ({ id = 'none', name, model, price, img }) => `<li data-id='${id}'>
-        <img src="${img}" alt="${name}" class='js-img'>
-        <h2>Name: ${name}</h2>
-        <h3>Model: ${model}</h3>
-        <p>Price: ${price}</p>
-      </li>`
-  )
-  .join(''); // отримали масив елементів для додання, але нам потрібен рядок (глобально HTML-документ - це великий рядок), щоб додати його в DOM
-console.dir(markup);
-container.insertAdjacentHTML('beforeend', markup); // додаемо один рядок зі всіма елементами в HTML - reflow виконано один раз
-
-// Видалення всього списку:
-const containerToDel = document.querySelector('.js-container');
-// [...containerToDel.children].forEach(item => item.remove()); // видалення по черзі, тому кожного разу перемальовується DOM
-
-// для видалення всього за одне звернення до DOM, використовується властивысть innerHTML:
-// containerToDel.innerHTML = ''; // все що було замінити на пустий рядок
-
-// Якщо потрібно видалити елемент за певнима критеріями, то використовується foeEach. Наприклад, потрібно видалити елемент, у якого є атрибут id
-[...containerToDel.children].forEach(item => {
-  console.log(item.dataset.id);
-  if (item.dataset.id !== 'none') {
-    item.remove();
-  }
-});
