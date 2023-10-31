@@ -9,3 +9,9 @@ list-style: none;
 .js-img{
     width: 320px;
 }
+
+#box {
+    height: 50px;
+    width: 50px;
+    background-color: red;
+}
