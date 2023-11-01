@@ -196,28 +196,28 @@
 // }
 
 // // 💡 Task 8
-// Наведено список людей. Зроби можлівість сортування списку за ім'ям та за прізвищем.
-const sortByNameBtn = document.querySelector('#sortByNameButton');
-const sortByLastNameBtn = document.querySelector('#sortByLastNameButton');
-const people = document.querySelector('.people');
+// // Наведено список людей. Зроби можлівість сортування списку за ім'ям та за прізвищем.
+// const sortByNameBtn = document.querySelector('#sortByNameButton');
+// const sortByLastNameBtn = document.querySelector('#sortByLastNameButton');
+// const people = document.querySelector('.people');
 
-sortByNameBtn.addEventListener('click', sortByName);
-sortByLastNameBtn.addEventListener('click', sortBylastName);
+// sortByNameBtn.addEventListener('click', sortByName);
+// sortByLastNameBtn.addEventListener('click', sortBylastName);
 
-function sortByName() {
-  const sorteredpeopleList = [...people.children].sort((a, b) =>
-    a.textContent.localeCompare(b.textContent)
-  );
-  people.innerHTML = '';
-  people.append(...sorteredpeopleList);
-}
+// function sortByName() {
+//   const sorteredpeopleList = [...people.children].sort((a, b) =>
+//     a.textContent.localeCompare(b.textContent)
+//   );
+//   people.innerHTML = '';
+//   people.append(...sorteredpeopleList);
+// }
 
-function sortBylastName() {
-  const sorteredpeopleList = [...people.children].sort((a, b) => {
-    const firstEl = a.textContent.split(' ')[1].toLowerCase();
-    const secondEl = b.textContent.split(' ')[1].toLowerCase();
-    return firstEl.localeCompare(secondEl);
-  });
-  people.innerHTML = '';
-  people.append(...sorteredpeopleList);
-}
+// function sortBylastName() {
+//   const sorteredpeopleList = [...people.children].sort((a, b) => {
+//     const firstEl = a.textContent.split(' ')[1].toLowerCase();
+//     const secondEl = b.textContent.split(' ')[1].toLowerCase();
+//     return firstEl.localeCompare(secondEl);
+//   });
+//   people.innerHTML = '';
+//   people.append(...sorteredpeopleList);
+// }
