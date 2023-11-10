@@ -176,7 +176,8 @@
 // date.getTime(); // 1899894300000
 
 // // ❗️❗️❗️ Проміси (Promise, обіцянка)
-// //
+// // Промисы на примере бургер-вечеринки https://habr.com/ru/companies/nix/articles/323066/
+// У нас проблемы с промисами https://habr.com/ru/companies/vk/articles/269465/
 
 // // Change value of isSuccess variable to call resolve or reject
 // const isSuccess = true;
